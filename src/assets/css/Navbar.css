@@ -1,0 +1,266 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light background for contrast */
+}
+
+/* Navbar Styling */
+nav {
+    display: flex;
+    flex-direction: column; /* Stack rows vertically */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-bottom: 3px solid rgba(0, 123, 255, 0.7); /* Accent color at the bottom */
+    z-index: 10;
+    position: relative;
+    
+}
+
+/* Top Navbar Styling */
+.top-nav {
+    display: flex;
+    justify-content: space-between; /* Space out elements */
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px;
+}
+
+.support {
+    font-weight: bold;
+    color: #333; /* Dark text color */
+    margin-right: 20px; /* Added right margin for spacing */
+}
+
+/* Logo Centering */
+.logo {
+    flex: 1; /* Center logo */
+    display: flex;
+    justify-content: center; /* Center logo horizontally */
+}
+
+.logo img {
+    height: 70px; /* Larger logo */
+    width: auto; /* Maintain aspect ratio */
+}
+
+/* Enhanced Button Styling for Navbar */
+.nav-buttons {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    align-items: center; /* Center items vertically */
+    padding: 10px; /* Add padding for consistent spacing */
+    list-style-type: none; /* Remove list bullets */
+}
+
+
+.nav-buttons li {
+    margin-left: 15px; /* Spacing between buttons */
+}
+.button {
+    background: transparent; /* Transparent background to match the navbar */
+    border: 2px solid #007bff; /* Outline button with accent color */
+    border-radius: 30px; /* More rounded corners for a polished feel */
+    padding: 10px 20px; /* Consistent padding */
+    margin-left: 15px; /* Spacing between buttons */
+    font-weight: bold; /* Bold font for emphasis */
+    color: #007bff; /* Blue text color */
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* Button Text Link */
+.button a {
+    color: inherit; /* Inherit color from button for link */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Block for padding and hover effects */
+}
+
+/* Hover Effects */
+.button:hover {
+    background: #007bff; /* Background color on hover */
+    color: white; /* Text color change on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+.button:active {
+    transform: scale(0.95); /* Slight shrink on click */
+}
+
+/* Enhanced Profile Button Styling */
+.profile-button {
+    display: inline-block; /* Inline-block for proper spacing */
+    margin-left: 20px; /* Spacing between profile button and nav */
+}
+
+.profile-button a {
+    background: transparent; /* Transparent background */
+    border: 2px solid #007bff; /* Outline style */
+    color: #007bff; /* Text color */
+    border-radius: 50%; /* Circle shape */
+    width: 44px; /* Set size */
+    height: 44px; /* Set size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.profile-button a:hover {
+    background: #007bff; /* Background color on hover */
+    color: white; /* Text color on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+.profile-button a:active {
+    transform: scale(0.95); /* Slight shrink on click */
+}
+
+/* Main Navbar Items */
+.main-nav {
+    display: flex;
+    justify-content: center; /* Center the main nav items */
+    list-style-type: none;
+    padding: 10px 0; /* Spacing around main items */
+    background-color: #f4f4f4; /* Light background to create separation */
+    border-bottom: 1px solid rgba(0, 123, 255, 0.7); /* Bottom border */
+    flex-wrap: wrap; /* Wrap items */
+}
+
+.main-nav li {
+    position: relative;
+    margin: 0 15px;
+    transition: transform 0.3s ease;
+}
+
+.main-nav li a {
+    text-decoration: none;
+    color: #333; /* Dark text for nav links */
+    font-weight: 500;
+    padding: 10px 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.main-nav li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #007bff; /* Underline effect in blue */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.main-nav li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.main-nav li:hover {
+    transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    color: #333; /* Dark color for dropdown button */
+    font-weight: 500;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    position: absolute;
+    backdrop-filter: blur(10px); /* Frosted glass effect for dropdown */
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+    min-width: 160px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-top: 5px; /* Spacing below button */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex; /* Show dropdown on hover */
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Slide down */
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333; /* Color of the hamburger lines */
+    margin: 4px 0; /* Spacing between lines */
+    transition: 0.4s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .top-nav {
+        flex-direction: column; /* Stack items on mobile */
+        width: 100%;
+        align-items: center;
+    }
+
+    .top-nav .support {
+        text-align: center; /* Center support info */
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger on mobile */
+        align-self: flex-end; /* Align to the right */
+    }
+
+    .navbar-active {
+        display: flex; /* Show nav items when active */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .main-nav {
+        display: none; /* Hide main nav by default */
+    }
+
+    .navbar-active {
+        display: flex; /* Show active navbar */
+    }
+
+    .nav-buttons {
+        flex-direction: column; /* Stack buttons on mobile */
+        align-items: center;
+    }
+
+    .button a {
+        padding: 10px 20px;
+        width: 100%; /* Full width on mobile */
+        text-align: center;
+    }
+
+    .profile-button {
+        margin-top: 10px; /* Spacing for profile button */
+    }
+}
