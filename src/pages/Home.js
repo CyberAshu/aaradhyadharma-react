@@ -210,7 +210,7 @@ const Home = () => {
             <div className="overlay">
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-              <p className="tech-stack">Technologies: {item.techStack ? item.techStack.join(', ') : 'Not specified'}</p>
+              <p className="tech-stack">Technologies: {item.techStack ? item.techStack.join(', ') : 'React + Django'}</p>
 
               <a href={item.liveLink} target="_blank" rel="noopener noreferrer" className="btn view-more">
                 View Project

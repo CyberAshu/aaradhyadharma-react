@@ -491,6 +491,7 @@ html {
     transform: translateY(0);
   }
 }
+
 /* Portfolio Section */
 .portfolio-section {
   padding: 80px 0;
@@ -504,14 +505,18 @@ html {
 }
 
 h2 {
-  font-size: 2.8rem;
+  font-size: 3rem;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   color: #1f4037;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  -webkit-background-clip: text;
+  color: transparent;
 }
+
 
 .filter-buttons {
   text-align: center;
@@ -623,6 +628,52 @@ h2 {
   background-color: #00c6ff;
 }
 
+.filter-buttons {
+  text-align: center;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 12px 30px;
+  margin: 10px;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  z-index: -1;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn:hover::before {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
   .portfolio-item {
     margin-bottom: 30px;
@@ -635,6 +686,15 @@ h2 {
   .filter-btn {
     padding: 10px 15px;
     margin: 0 8px;
+  }
+  .filter-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .filter-buttons {
+    justify-content: space-around;
+    margin-bottom: 30px;
   }
 }
 
