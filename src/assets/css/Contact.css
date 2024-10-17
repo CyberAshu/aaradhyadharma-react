@@ -1,69 +1,108 @@
-/* Add this in your main CSS file */
-.contact-info p {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-  
-  .contact-form {
-    margin-top: 20px;
-  }
-  
-  .contact-form input, .contact-form textarea {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .contact-form button {
-    background-color: #003366;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .contact-form button:hover {
-    background-color: #005bb5;
-  }
-
-  
-  /* Contact Section */
+/* Contact Section */
 .contact-section {
-  padding: 100px 50px;
-  background: linear-gradient(135deg, rgba(31, 64, 55, 0.9), rgba(153, 242, 200, 0.9)), 
-  url("../images/contact-bg.jpg") no-repeat center center/cover;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #22313F, #59ABE3); /* Gradient background */
   background-attachment: fixed;
   color: white;
-  position: relative;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.contact-section h2 {
+.contact-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), rgba(0,0,0,0));
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.contact-section .contact-content, 
+.contact-section .contact-header {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-header h2 {
   font-size: 3rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   animation: fadeIn 1.5s ease;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.contact-section p {
-  font-size: 1.2rem;
+.contact-header p {
+  font-size: 1.3rem;
   margin-bottom: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.contact-form {
-  max-width: 500px;
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.contact-details {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px); /* Add blur effect */
+}
+
+.contact-details h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact-details p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #28a745;
+  transform: scale(1.1);
+}
+
+.social-icons i {
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover i {
+  transform: rotate(360deg); /* Rotation animation */
+}
+
+/* Contact Form */
+.contact-form {
+  flex: 1;
+  min-width: 300px;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 15px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px); /* Add blur effect */
+}
+
+.contact-form h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .contact-form input,
@@ -99,4 +138,66 @@
 .contact-form button:hover {
   background-color: #218838;
   transform: scale(1.05);
+}
+
+/* Floating Circles Animation */
+.contact-section::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(-50%);
+  }
+  50% {
+    transform: translateY(50px) translateX(-50%);
+  }
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 30px 15px;
+  }
+
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .contact-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .contact-details, .contact-form {
+    min-width: 100%;
+  }
+
+  .social-icons a {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-header h2 {
+    font-size: 2rem;
+  }
+
+  .contact-form h3, .contact-details h3 {
+    font-size: 1.8rem;
+  }
+
+  .contact-form button {
+    font-size: 1.1rem;
+  }
 }
