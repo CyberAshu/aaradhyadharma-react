@@ -7,11 +7,11 @@ const About = () => {
     return storedReviews ? JSON.parse(storedReviews) : [
       {
         text: "Aaradhyadharma Web Solutions exceeded our expectations! Their attention to detail and commitment to understanding our needs made them an invaluable partner.",
-        client: "Client Name, CEO of XYZ Corp",
+        client: "Michael Brown, CTO of InnovateX",
       },
       {
         text: "Working with Ayush and his team was a pleasure. They delivered on time and provided top-notch support throughout the project.",
-        client: "Client Name, Founder of ABC Solutions",
+        client: "Jane Smith, Founder of Creative Solutions",
       },
     ];
   });
