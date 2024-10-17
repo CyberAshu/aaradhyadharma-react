@@ -4,20 +4,24 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  color: #333;
-  background: #f9f9f9;
+  color: #2c3e50; /* Darker, elegant color */
+  background: linear-gradient(180deg, #f0f4f8 0%, #eaeef3 100%); /* Subtle gradient background */
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease-in-out;
 }
 
 h2, h3 {
-  color: #0d6efd;
+  color: #3498db; /* Softer blue tone */
   margin-bottom: 20px;
+  transition: color 0.3s ease-in-out;
 }
 
 p {
   margin-bottom: 20px;
-  color: #555;
+  color: #34495e; /* Darker paragraph text for better readability */
+  transition: color 0.3s ease-in-out;
 }
+
 
 /* Section General Styles */
 section {
@@ -25,75 +29,79 @@ section {
   text-align: center;
 }
 
-section h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 40px;
-}
 
 .cta-button {
-  background-color: #0d6efd;
+  background-color: #3498db; /* Softer blue */
   color: #fff;
   padding: 12px 30px;
   border: none;
   border-radius: 30px;
   font-size: 1rem;
   cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Button shadow */
   transition: all 0.3s ease-in-out;
 }
 
 .cta-button:hover {
-  background-color: #0b5ed7;
-  transform: scale(1.1);
+  background-color: #2980b9; /* Darker hover color */
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
+
 
 /* About Section */
 .about-section {
-  background: linear-gradient(135deg, #f0f4f8 0%, #e0e4e8 100%);
-  position: relative;
-}
-
-.about-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0 10%;
-}
-
-.about-content, .founder-info-container {
-  flex: 1;
-  padding: 20px;
+  background: linear-gradient(135deg, #f0f4f8 0%, #dfe6e9 100%);
+  padding: 80px 20px;
 }
 
 .about-content h2 {
-  font-size: 2.8rem;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2c3e50; /* Deep color for heading */
   animation: fadeInDown 1s ease-in-out;
 }
 
-.about-content p, .founder-info p {
+.about-content p {
   font-size: 1.2rem;
   line-height: 1.8;
-  animation: fadeInUp 1s ease-in-out;
-}
-
-.founder-image img {
-  width: 50%;
-  height: auto;
-  border-radius: 10px;
-  animation: slideInLeft 1s ease-in-out;
-}
-
-.company-highlights {
-  list-style: none;
-  padding: 0;
-  animation: fadeInUp 1.5s ease-in-out;
+  color: #34495e;
+  margin-bottom: 30px;
+  animation: fadeInUp 1.2s ease-in-out;
 }
 
 .company-highlights li {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  color: #3498db; /* Softer blue for highlights */
   margin-bottom: 10px;
 }
+
+.founder-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.founder-image img:hover {
+  transform: scale(1.08); /* Slight zoom effect */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* Larger shadow on hover */
+}
+
+.founder-info h3 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-top: 20px;
+}
+
+.founder-info p {
+  font-size: 1.1rem;
+  color: #34495e;
+  line-height: 1.7;
+}
+
 
 /* Animations */
 @keyframes fadeInDown {
@@ -118,16 +126,80 @@ section h2 {
   }
 }
 
-@keyframes slideInLeft {
-  from {
-      opacity: 0;
-      transform: translateX(-50px);
+/* Media Queries */
+@media (max-width: 1024px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
-  to {
-      opacity: 1;
-      transform: translateX(0);
+
+  .about-content, .founder-info-container {
+    padding: 20px;
+  }
+
+  .about-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .founder-image img {
+    width: 70%;
   }
 }
+
+@media (max-width: 768px) {
+  .about-content h2 {
+    font-size: 2rem;
+  }
+
+  .about-content p {
+    font-size: 1rem;
+  }
+
+  .company-highlights li {
+    font-size: 1rem;
+  }
+
+  .founder-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .founder-image img {
+    width: 60%;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-content p {
+    font-size: 0.9rem;
+  }
+
+  .company-highlights li {
+    font-size: 0.9rem;
+  }
+
+  .founder-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .founder-image img {
+    width: 50%;
+  }
+
+  .cta-button {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+}
+
 
 /* Mission Section */
 .mission-section {
