@@ -256,7 +256,7 @@ const Home = () => {
     </div>
     <div className="faq-item">
       <h3>How can we contact you?</h3>
-      <p>Reach us via our contact page or email at info@aaradhyadharma.com.</p>
+      <p>Reach us via our contact page or email at aaradhyadharmaitsolution@gmail.com.</p>
     </div>
     {/* Add more FAQ items similarly */}
   </div>
