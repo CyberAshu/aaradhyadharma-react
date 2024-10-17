@@ -1,6 +1,39 @@
 import React from 'react';
+import { useState ,useEffect} from 'react';
 import '../assets/css/About.css'
 const About = () => {
+  const [reviews, setReviews] = useState(() => {
+    const storedReviews = localStorage.getItem('reviews');
+    return storedReviews ? JSON.parse(storedReviews) : [
+      {
+        text: "Aaradhyadharma Web Solutions exceeded our expectations! Their attention to detail and commitment to understanding our needs made them an invaluable partner.",
+        client: "Client Name, CEO of XYZ Corp",
+      },
+      {
+        text: "Working with Ayush and his team was a pleasure. They delivered on time and provided top-notch support throughout the project.",
+        client: "Client Name, Founder of ABC Solutions",
+      },
+    ];
+  });
+
+  // New review input fields
+  const [newReview, setNewReview] = useState({
+    text: '',
+    client: '',
+  });
+
+  // Save reviews to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+  }, [reviews]);
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setReviews([...reviews, newReview]);
+    setNewReview({ text: '', client: '' }); // Reset form
+  };
+
   return (
     <>
      <section className="about-section">
@@ -70,24 +103,39 @@ const About = () => {
         </div>
       </section>
 
-      {/* Client Testimonials Section */}
       <section className="testimonials-section">
-        <div className="testimonials-container">
-          <h2>What Our Clients Say</h2>
-          <div className="testimonial-item">
-            <p>
-              "Aaradhyadharma Web Solutions exceeded our expectations! Their attention to detail and commitment to understanding our needs made them an invaluable partner."
-            </p>
-            <span>- Client Name, CEO of XYZ Corp</span>
+      <div className="testimonials-container">
+        <h2>What Our Clients Say</h2>
+        {reviews.map((review, index) => (
+          <div className="testimonial-item" key={index}>
+            <p>"{review.text}"</p>
+            <span>- {review.client}</span>
           </div>
-          <div className="testimonial-item">
-            <p>
-              "Working with Ayush and his team was a pleasure. They delivered on time and provided top-notch support throughout the project."
-            </p>
-            <span>- Client Name, Founder of ABC Solutions</span>
-          </div>
-        </div>
-      </section>
+        ))}
+
+        {/* Review Submission Form */}
+        <form className="add-review-form" onSubmit={handleSubmit}>
+          <textarea
+            placeholder="Write your review..."
+            value={newReview.text}
+            onChange={(e) =>
+              setNewReview({ ...newReview, text: e.target.value })
+            }
+            required
+          />
+          <input
+            type="text"
+            placeholder="Your name and position"
+            value={newReview.client}
+            onChange={(e) =>
+              setNewReview({ ...newReview, client: e.target.value })
+            }
+            required
+          />
+          <button type="submit">Submit Review</button>
+        </form>
+      </div>
+    </section>
 
       {/* Call to Action */}
       <section className="cta-section">
