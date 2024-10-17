@@ -62,13 +62,13 @@ const Navbar = () => {
         <li className="dropdown" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <button className="dropbtn">Web Solutions</button>
           {solutionsDropdown && (
-            <div className="dropdown-content show">
+            <div className="dropdown-content show" role="menu">
               <Link to="/uiux-design" onClick={() => setNavbarActive(false)}>UI/UX Design</Link>
               <Link to="/software-development" onClick={() => setNavbarActive(false)}>Software Development</Link>
               <Link to="/digital-marketing" onClick={() => setNavbarActive(false)}>Digital Marketing</Link>
               <Link to="/ethical-hacking" onClick={() => setNavbarActive(false)}>Ethical Hacking</Link>
-              <Link to="/python-project" onClick={() => setNavbarActive(false)}>Python Project</Link> {/* Additional link */}
-              <Link to="/ecommerce-website" onClick={() => setNavbarActive(false)}>Ecommerce Website</Link> {/* Additional link */}
+              <Link to="/python-project" onClick={() => setNavbarActive(false)}>Python Project</Link>
+              <Link to="/ecommerce-website" onClick={() => setNavbarActive(false)}>Ecommerce Website</Link>
             </div>
           )}
         </li>

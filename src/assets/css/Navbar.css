@@ -199,68 +199,215 @@ nav {
     opacity: 1; /* Fade in */
     transform: translateY(0); /* Slide down */
 }
-
-/* Hamburger Menu */
+/* Hamburger Menu Styling */
 .hamburger {
     display: none; /* Hidden by default */
     flex-direction: column;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    z-index: 11; /* Ensures hamburger stays on top */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.hamburger:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
 
 .hamburger div {
-    width: 25px;
-    height: 3px;
-    background-color: #333; /* Color of the hamburger lines */
-    margin: 4px 0; /* Spacing between lines */
-    transition: 0.4s;
+    width: 35px; /* Increased width for visibility */
+    height: 4px; /* Slightly thicker lines */
+    background-color: #007bff; /* Color of the hamburger lines */
+    margin: 6px 0; /* Increased spacing between lines */
+    border-radius: 10px; /* More rounded edges for aesthetic look */
+    transition: all 0.4s ease; /* Smooth transition for icon animation */
 }
 
-/* Responsive Design */
+/* Active Hamburger Animation */
+.hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px); /* Top line rotation */
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0; /* Hide middle line */
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px); /* Bottom line rotation */
+}
+
+/* Hamburger Menu Active State */
+.navbar-active .main-nav {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center the list items */
+    width: 100%; /* Full width */
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+    padding: 20px 0; /* Increased spacing around nav items */
+    border-top: 3px solid #007bff; /* Accent border on top */
+    animation: slideDown 0.5s ease-in-out; /* Smooth slide-down animation */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.navbar-active .main-nav li {
+    margin: 15px 0; /* Increased spacing between list items */
+    text-align: center; /* Center list items */
+    width: 100%; /* Full width */
+    opacity: 0; /* Start hidden for animation */
+    transform: translateY(-10px); /* Start slightly above for animation */
+    animation: fadeIn 0.5s ease forwards; /* Fade in effect */
+}
+
+/* Staggered animation for each list item */
+.navbar-active .main-nav li:nth-child(1) { animation-delay: 0.1s; }
+.navbar-active .main-nav li:nth-child(2) { animation-delay: 0.2s; }
+.navbar-active .main-nav li:nth-child(3) { animation-delay: 0.3s; }
+.navbar-active .main-nav li:nth-child(4) { animation-delay: 0.4s; }
+
+/* List Item Styling */
+.navbar-active .main-nav li {
+    background-color: #f8f9fa; /* Light background color for items */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease; /* Transition for background color */
+}
+
+.navbar-active li {
+    list-style: none; /* Remove bullet points */
+}
+
+.navbar-active .main-nav li:hover {
+    background-color: #e2e6ea; /* Darker background on hover */
+}
+
+.navbar-active .main-nav li a {
+    color: #007bff; /* Accent color for the links */
+    font-weight: bold; /* Bold text for emphasis */
+    padding: 12px 20px; /* Adjusted padding */
+    text-decoration: none; /* Remove underline from links */
+    display: inline-block; /* Ensure clickable area */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    border-radius: 8px; /* More rounded corners for links */
+    position: relative; /* For the after element */
+    z-index: 1;
+}
+
+/* Styling for active link */
+.navbar-active .main-nav li a.active {
+    background-color: #007bff; /* Active background color */
+    color: #fff; /* White text on active */
+}
+
+/* List Item Hover Effect */
+.navbar-active .main-nav li a:hover {
+    background-color: #007bff; /* Change background on hover */
+    color: #fff; /* White text on hover */
+}
+
+/* Ensure the buttons are properly displayed in the mobile view */
+.navbar-active .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-active .nav-buttons .button {
+    margin: 10px 0;
+    width: 80%; /* Full width but with some padding */
+    text-align: center;
+    padding: 12px; /* Add padding for better touch targets */
+    border-radius: 30px; /* Rounded corners */
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.navbar-active .nav-buttons .button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Mobile View */
 @media (max-width: 768px) {
     .top-nav {
-        flex-direction: column; /* Stack items on mobile */
-        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
     }
 
-    .top-nav .support {
-        text-align: center; /* Center support info */
-        margin: 10px 0;
+    .top-nav .support, .nav-buttons, .profile-button, .main-nav {
+        display: none; /* Hide all buttons and nav items */
     }
 
     .hamburger {
-        display: flex; /* Show hamburger on mobile */
-        align-self: flex-end; /* Align to the right */
+        display: flex; /* Show hamburger icon */
     }
 
+    /* When navbar is active */
     .navbar-active {
         display: flex; /* Show nav items when active */
         flex-direction: column; /* Stack items vertically */
         align-items: center;
         width: 100%;
-        padding: 10px 0;
+        padding: 20px 0; /* Increased padding for better touch area */
+        position: absolute;
+        top: 100%; /* Below the top-nav */
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.95); /* Frosted glass effect */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        z-index: 9;
+        animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
     }
 
-    .main-nav {
-        display: none; /* Hide main nav by default */
-    }
-
-    .navbar-active {
-        display: flex; /* Show active navbar */
-    }
-
-    .nav-buttons {
-        flex-direction: column; /* Stack buttons on mobile */
+    .navbar-active .main-nav,
+    .navbar-active .nav-buttons {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
         align-items: center;
-    }
-
-    .button a {
-        padding: 10px 20px;
         width: 100%; /* Full width on mobile */
-        text-align: center;
+        padding: 20px 0; /* Increased padding */
     }
 
-    .profile-button {
-        margin-top: 10px; /* Spacing for profile button */
+    .navbar-active .main-nav li,
+    .navbar-active .nav-buttons li {
+        margin: 15px 0; /* Vertical spacing between items */
+        width: 100%; /* Make items take full width */
+        text-align: center; /* Center text */
     }
+
+    .navbar-active .main-nav li a,
+    .navbar-active .nav-buttons li .button a {
+        width: 100%; /* Full width for links and buttons */
+        padding: 12px; /* Add padding for better touch targets */
+        border-radius: 30px; /* Rounded corners for buttons */
+    }
+}
+
+/* Dropdown styles for better interaction */
+.dropdown-content {
+    display: none; /* Initially hidden */
+    position: absolute; /* Positioning for dropdown */
+    background-color: #f9f9f9; /* Light background */
+    min-width: 160px; /* Minimum width */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    z-index: 1; /* Ensure dropdown stays on top */
+}
+
+.dropdown-content.show {
+    display: block; /* Show dropdown when active */
+}
+
+/* Improved transitions for dropdown */
+.dropdown-content a {
+    color: black; /* Text color */
+    padding: 12px 16px; /* Padding */
+    text-decoration: none; /* Remove underline */
+    display: block; /* Ensure block display */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
 }
