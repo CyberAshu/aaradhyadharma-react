@@ -167,56 +167,64 @@ const Home = () => {
   </div>
 </section>
 
+{/* Portfolio Section */}
+<section className="portfolio-section">
+  <div className="container">
+    <h2>Our Projects</h2>
+    <div className="filter-buttons">
+      <button
+        data-filter="all"
+        className={`filter-btn ${activeFilter === "all" ? "active" : ""}`}
+        onClick={() => handleFilterClick("all")}
+      >
+        All
+      </button>
+      <button
+        data-filter="web"
+        className={`filter-btn ${activeFilter === "web" ? "active" : ""}`}
+        onClick={() => handleFilterClick("web")}
+      >
+        Web Development
+      </button>
+      <button
+        data-filter="mobile"
+        className={`filter-btn ${activeFilter === "mobile" ? "active" : ""}`}
+        onClick={() => handleFilterClick("mobile")}
+      >
+        Mobile Apps
+      </button>
+      <button
+        data-filter="software"
+        className={`filter-btn ${activeFilter === "software" ? "active" : ""}`}
+        onClick={() => handleFilterClick("software")}
+      >
+        Software Solutions
+      </button>
+    </div>
 
+    <div className="portfolio-grid">
+      {filteredItems.map((item, index) => (
+        <div className="portfolio-item" data-category={item.category} key={index}>
+          <div className="image-wrapper">
+            <img src={item.img} alt={item.title} />
+            <div className="overlay">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <p className="tech-stack">Technologies: {item.techStack ? item.techStack.join(', ') : 'Not specified'}</p>
 
- {/* Portfolio Section */}
- <section className="portfolio-section">
-        <div className="container">
-          <h2>Our Work</h2>
-          <div className="filter-buttons">
-            <button
-              data-filter="all"
-              className={`filter-btn ${activeFilter === "all" ? "active" : ""}`}
-              onClick={() => handleFilterClick("all")}
-            >
-              All
-            </button>
-            <button
-              data-filter="web"
-              className={`filter-btn ${activeFilter === "web" ? "active" : ""}`}
-              onClick={() => handleFilterClick("web")}
-            >
-              Web Development
-            </button>
-            <button
-              data-filter="mobile"
-              className={`filter-btn ${activeFilter === "mobile" ? "active" : ""}`}
-              onClick={() => handleFilterClick("mobile")}
-            >
-              Mobile Apps
-            </button>
-            <button
-              data-filter="software"
-              className={`filter-btn ${activeFilter === "software" ? "active" : ""}`}
-              onClick={() => handleFilterClick("software")}
-            >
-              Software Solutions
-            </button>
-          </div>
-
-          <div className="portfolio-grid">
-            {filteredItems.map((item, index) => (
-              <div className="portfolio-item" data-category={item.category} key={index}>
-                <img src={item.img} alt={item.title} />
-                <div className="portfolio-caption">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            ))}
+              <a href={item.liveLink} target="_blank" rel="noopener noreferrer" className="btn view-more">
+                View Project
+              </a>
+              <a href={item.repoLink} target="_blank" rel="noopener noreferrer" className="btn github-repo">
+                GitHub Repo
+              </a>
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
  
 
